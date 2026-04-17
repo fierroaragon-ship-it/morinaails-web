@@ -1,171 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gundega | Nails & Beauty Zürich</title>
+    <title>Gundega Morite | High-End Nails Zürich</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --espresso: #1a1110;
-            --marble-bg: #2c1e1c;
-            --text-light: #f5f5f7;
+            --gold: #c5a059;
+            --gold-bright: #f0d78c;
+            --espresso: #0d0d0d;
+            --text: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-
-        body {
-            background-color: var(--espresso);
-            color: var(--text-light);
+        body, html { 
+            margin: 0; padding: 0; 
+            background: var(--espresso);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Efecto Mosaico de Mármol */
-        .marble-overlay {
+        /* FONDO DE MÁRMOL DINÁMICO */
+        .marble-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png'), 
-                              linear-gradient(45deg, rgba(44,30,28,0.9) 0%, rgba(26,17,16,1) 100%);
+            background: linear-gradient(rgba(13,13,13,0.7), rgba(13,13,13,0.7)), 
+                        url('https://images.unsplash.com/photo-1508280756091-9bed7ff4933d?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
+            transform: scale(1.1);
         }
 
-        /* Header Minimalista */
-        nav {
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            opacity: 0;
-        }
-
-        .logo-text {
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            color: var(--gold);
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        /* Hero Section */
+        /* HERO SECTION */
         .hero {
-            height: 80vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            width: 120px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Usaremos un placeholder elegante para su logo */
+        .logo-circle {
+            width: 100px; height: 100px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem; color: var(--gold);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 200;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero p {
-            font-size: 1rem;
-            letter-spacing: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            letter-spacing: 12px;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--gold), var(--gold-bright), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
         }
 
-        /* El Botón de Lujo */
-        .cta-button {
-            padding: 15px 40px;
+        .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 50px;
+            opacity: 0;
+        }
+
+        /* BOTÓN ESPECTACULAR */
+        .cta-gold {
+            position: relative;
+            padding: 18px 45px;
             border: 1px solid var(--gold);
             background: transparent;
             color: var(--gold);
             text-decoration: none;
-            letter-spacing: 2px;
-            transition: all 0.5s ease;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: var(--gold);
-            color: var(--espresso);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Sección de Mosaico Visual */
-        .mosaic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2px;
-            background: var(--gold); /* Líneas doradas entre fotos */
-            margin-top: 100px;
-        }
-
-        .mosaic-item {
-            height: 400px;
-            background: var(--marble-bg);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .mosaic-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(30%);
-            transition: transform 1s ease;
-        }
-
-        .mosaic-item:hover img {
-            transform: scale(1.1);
-            filter: grayscale(0%);
-        }
-
-        footer {
-            padding: 100px 40px;
-            text-align: center;
             font-size: 0.8rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            overflow: hidden;
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .cta-gold:hover {
+            color: var(--espresso);
+            background: var(--gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+        }
+
+        /* SECCIÓN DE SERVICIOS MINIMALISTA */
+        .services-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(197, 160, 89, 0.2);
+            margin-top: -50px;
+        }
+
+        .service-box {
+            background: var(--espresso);
+            padding: 80px 40px;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        .service-box:hover {
+            background: #151515;
+        }
+
+        .service-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .service-box p {
+            font-size: 0.8rem;
+            line-height: 1.8;
             color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .services-preview { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="marble-overlay"></div>
-
-    <nav id="nav">
-        <div class="logo-text">Gundega</div>
-    </nav>
+    <div class="marble-bg" id="bg"></div>
 
     <section class="hero">
-        <h1 id="title">Exclusivity in Every Detail</h1>
-        <p id="subtitle">Zurich Seefeld • Nails & Beauty</p>
-        <a href="#" class="cta-button" id="cta">BOOK APPOINTMENT</a>
+        <div class="logo-container" id="logo">
+            <div class="logo-circle">G</div>
+        </div>
+        <h1 id="title">Gundega Morite</h1>
+        <div class="subtitle" id="subtitle">Nails & Beauty • Zürich Seefeld</div>
+        <a href="#" class="cta-gold" id="cta">PRIVATE BOOKING</a>
     </section>
 
-    <div class="mosaic-grid">
-        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1604654894610-df490651e18c?auto=format&fit=crop&q=80" alt="Nails"></div>
-        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1632345033845-81faec443428?auto=format&fit=crop&q=80" alt="Beauty"></div>
-        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80" alt="Studio"></div>
+    <div class="services-preview">
+        <div class="service-box">
+            <h3>Manicure</h3>
+            <p>Perfección técnica y cuidado cuticular profundo.</p>
+        </div>
+        <div class="service-box" style="border-left: 1px solid rgba(197,160,89,0.1); border-right: 1px solid rgba(197,160,89,0.1);">
+            <h3>Gel Design</h3>
+            <p>Arte minimalista con productos premium europeos.</p>
+        </div>
+        <div class="service-box">
+            <h3>Pedicure</h3>
+            <p>Experiencia de lujo y estética impecable.</p>
+        </div>
     </div>
 
-    <footer>
-        FORCHSTRASSE 86, 8008 ZÜRICH <br><br>
-        © 2026 GUNDEGA MORITE | POWERED BY FIKAMI
-    </footer>
-
     <script>
-        // Animaciones de lujo con GSAP
         window.addEventListener('load', () => {
             const tl = gsap.timeline();
 
-            tl.to("#nav", { opacity: 1, duration: 1.5 })
-              .to("#title", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=0.5")
-              .to("#subtitle", { opacity: 1, duration: 1 }, "-=0.8")
-              .to("#cta", { opacity: 1, duration: 1 }, "-=0.5");
+            // Animación cinematográfica de entrada
+            tl.to("#bg", { scale: 1, duration: 3, ease: "power2.out" })
+              .to("#logo", { opacity: 1, scale: 1, duration: 1.5, ease: "back.out(1.7)" }, "-=2")
+              .to("#title", { opacity: 1, duration: 2, ease: "power3.out" }, "-=1")
+              .to("#subtitle", { opacity: 1, y: -10, duration: 1.5 }, "-=1.5")
+              .to("#cta", { opacity: 1, duration: 1 }, "-=1");
         });
     </script>
 </body>
