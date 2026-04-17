@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundega Morite | High-End Nails Zürich</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #c5a059; --espresso: #0d0d0d; }
+        body, html { margin: 0; padding: 0; background: var(--espresso); color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        .marble-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&q=80');
+            background-size: cover; background-position: center; z-index: -1;
+        }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .logo-img { width: 180px; opacity: 0; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(197,160,89,0.3)); }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 12px; color: var(--gold); opacity: 0; margin: 10px 0; text-transform: uppercase; }
+        .subtitle { letter-spacing: 5px; font-size: 0.8rem; color: rgba(255,255,255,0.6); opacity: 0; margin-bottom: 40px; }
+        .cta-gold { padding: 15px 40px; border: 1px solid var(--gold); background: transparent; color: var(--gold); text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; transition: 0.5s; opacity: 0; border-radius: 2px; }
+        .cta-gold:hover { background: var(--gold); color: var(--espresso); box-shadow: 0 0 30px rgba(197,160,89,0.5); }
+        .mosaic { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; padding: 10px; background: var(--espresso); }
+        .mosaic img { width: 100%; height: 500px; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .mosaic img:hover { opacity: 1; transform: scale(1.02); }
+        footer { padding: 60px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; color: gray; }
+    </style>
+</head>
+<body>
+    <div class="marble-bg"></div>
+    <section class="hero">
+        <img src="https://i.ibb.co/3mN9R0t/morinails-logo.png" class="logo-img" id="logo">
+        <h1 id="title">Gundega Morite</h1>
+        <div class="subtitle" id="subtitle">Nails & Beauty • Zürich Seefeld</div>
+        <a href="https://wa.me/41000000000" class="cta-gold" id="cta">BOOK APPOINTMENT</a>
+    </section>
+    <div class="mosaic">
+        <img src="https://images.unsplash.com/photo-1604654894610-df490982579d?auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80">
+    </div>
+    <footer>ZÜRICH, SWITZERLAND • POWERED BY FIKAMI</footer>
+    <script>
+        window.onload = () => {
+            const tl = gsap.timeline();
+            tl.to("#logo", { opacity: 1, y: -20, duration: 1.5 })
+              .to("#title", { opacity: 1, duration: 1.5 }, "-=1")
+              .to("#subtitle", { opacity: 1, duration: 1 }, "-=1")
+              .to("#cta", { opacity: 1, duration: 1 }, "-=0.5");
+        };
+    </script>
+</body>
+</html>
