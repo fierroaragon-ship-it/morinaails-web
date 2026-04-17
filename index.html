@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundega | Nails & Beauty Zürich</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --espresso: #1a1110;
+            --marble-bg: #2c1e1c;
+            --text-light: #f5f5f7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+        body {
+            background-color: var(--espresso);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Efecto Mosaico de Mármol */
+        .marble-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png'), 
+                              linear-gradient(45deg, rgba(44,30,28,0.9) 0%, rgba(26,17,16,1) 100%);
+            z-index: -1;
+        }
+
+        /* Header Minimalista */
+        nav {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 40px;
+            opacity: 0;
+        }
+
+        /* El Botón de Lujo */
+        .cta-button {
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: var(--espresso);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Sección de Mosaico Visual */
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+            background: var(--gold); /* Líneas doradas entre fotos */
+            margin-top: 100px;
+        }
+
+        .mosaic-item {
+            height: 400px;
+            background: var(--marble-bg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: transform 1s ease;
+        }
+
+        .mosaic-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        footer {
+            padding: 100px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marble-overlay"></div>
+
+    <nav id="nav">
+        <div class="logo-text">Gundega</div>
+    </nav>
+
+    <section class="hero">
+        <h1 id="title">Exclusivity in Every Detail</h1>
+        <p id="subtitle">Zurich Seefeld • Nails & Beauty</p>
+        <a href="#" class="cta-button" id="cta">BOOK APPOINTMENT</a>
+    </section>
+
+    <div class="mosaic-grid">
+        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1604654894610-df490651e18c?auto=format&fit=crop&q=80" alt="Nails"></div>
+        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1632345033845-81faec443428?auto=format&fit=crop&q=80" alt="Beauty"></div>
+        <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80" alt="Studio"></div>
+    </div>
+
+    <footer>
+        FORCHSTRASSE 86, 8008 ZÜRICH <br><br>
+        © 2026 GUNDEGA MORITE | POWERED BY FIKAMI
+    </footer>
+
+    <script>
+        // Animaciones de lujo con GSAP
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+
+            tl.to("#nav", { opacity: 1, duration: 1.5 })
+              .to("#title", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=0.5")
+              .to("#subtitle", { opacity: 1, duration: 1 }, "-=0.8")
+              .to("#cta", { opacity: 1, duration: 1 }, "-=0.5");
+        });
+    </script>
+</body>
+</html>
